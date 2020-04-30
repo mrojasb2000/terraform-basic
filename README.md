@@ -6,6 +6,10 @@ terraform show
 terraform state list
 terraform state show <path_resource> ej: terraform state show aws_instance.hello-instance
 terraform state show aws_vpc.my_vpc
+terraform graph
+terraform taint aws_vpc.my_vpc
+
+
 
 terraform destroy -auto-approve
 
