@@ -8,7 +8,6 @@ variable "name" {
 
 }
 
-
 resource "aws_security_group" "allow_http" {
   name = "${var.name} allow_http"
   description = "Allow HTTP traffic"
@@ -29,7 +28,6 @@ resource "aws_security_group" "allow_http" {
   }
 }
 
-
 resource "aws_instance" "mighty-trousers" {
   ami = "ami-0777ff5c030fe1d38"
   instance_type = "t3.micro"
@@ -38,4 +36,8 @@ resource "aws_instance" "mighty-trousers" {
   tags = {
       Name = "${var.name}"
   }
+}
+
+output "hostname" {
+  value = "${aws_instance.mighty-trousers.private_dns}"
 }
