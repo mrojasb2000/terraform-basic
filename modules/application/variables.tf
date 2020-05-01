@@ -3,7 +3,7 @@ variable "environment" {
 }
 
 variable "instance_type" {
-  type = "map"
+  type = map
   default = {
     "dev" = "t3.micro"
     "test" = "t3.medium"
@@ -12,7 +12,7 @@ variable "instance_type" {
 }
 
 variable "extra_sgs" {
-  type = "list"
+  type = list
   default = []
 }
 

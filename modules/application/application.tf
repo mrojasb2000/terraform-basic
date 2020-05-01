@@ -13,7 +13,7 @@ variable "name" {
 resource "aws_security_group" "allow_http" {
   name = "${var.environment}-${var.name} allow_http"
   description = "Allow HTTP traffic"
-  vpc_id = "${var.vpc_id}"
+  vpc_id = var.vpc_id
 
   ingress {
       from_port = 80

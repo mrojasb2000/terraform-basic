@@ -1,6 +1,6 @@
 # Provider configuration
 provider "aws" {
-  region = "${var.region}"
+  region = var.region
 }
 
 # Resource configuration
@@ -9,7 +9,7 @@ resource "aws_vpc" "my_vpc" {
 }
 
 resource "aws_subnet" "public" {
-  vpc_id =  "${aws_vpc.my_vpc.id}"
+  vpc_id =  aws_vpc.my_vpc.id
   cidr_block = "10.0.1.0/24"
 
   tags = {
@@ -20,7 +20,7 @@ resource "aws_subnet" "public" {
 resource "aws_security_group" "default" {
   name = "Default SG"
   description = "Allow SSH access"
-  vpc_id = "${aws_vpc.my_vpc.id}"
+  vpc_id = aws_vpc.my_vpc.id
 
   ingress {
     from_port = 22
