@@ -34,7 +34,7 @@ resource "aws_instance" "app-server" {
   ami = "ami-0777ff5c030fe1d38"
   instance_type = "${lookup(var.instance_type, var.environment)}"
   subnet_id = "${var.subnet_id}"
-  vpc_security_group_ids = ["${aws_security_group.allow_http.id}"]
+  vpc_security_group_ids = "${distinct(concat(aws_security_group.allow_http.*.id, var.extra_sgs))}"
   tags = {
       Name = "${var.environment}-${var.name}"
   }
