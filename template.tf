@@ -30,6 +30,10 @@ resource "aws_security_group" "default" {
   }
 }
 
+resource "aws_key_pair" "terraform" {
+  key_name = "terraform"
+  public_key = "${file("./keys/aws_terraform.pub")}"
+}
 
 module "mighty-trousers" {
   source = "./modules/application"
