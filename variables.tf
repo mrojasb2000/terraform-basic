@@ -29,4 +29,16 @@ variable "name" {
  description = "EC2 instance name"
 }
 
+variable "external_nameserver" {
+  default = "8.8.8.8"
+}
+
+variable "extra_packages" {
+  description = "Additional packages to install for particular module"
+  default = {
+    base = "wget"
+    MightyTrousers = "wget bind-utils"
+  }
+}
+
 

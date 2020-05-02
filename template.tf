@@ -35,6 +35,13 @@ resource "aws_key_pair" "terraform" {
   public_key = "${file("./keys/aws_terraform.pub")}"
 }
 
+/*
+resource "aws_iam_role_policy" "s3-assets-all" {
+  name = "s3=assets@all"
+  role = "${aws_iam_role.app-production.id}"
+  policy = "${file("./policies/s3=assets@all.json")}"
+}*/
+
 module "mighty-trousers" {
   source = "./modules/application"
   vpc_id = "${aws_vpc.my_vpc.id}"
@@ -42,4 +49,6 @@ module "mighty-trousers" {
   environment = "${var.environment}"
   name = "${var.name}"
   extra_sgs = ["${aws_security_group.default.id}"]
+  extra_packages = "${var.extra_packages}"
+  external_nameserver = "${var.external_nameserver}"
 }
